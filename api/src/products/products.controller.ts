@@ -10,9 +10,30 @@ export class ProductsController {
     constructor(private productService: ProductService) {}
 
     @Get()
-    getAllProducts(): Promise<Product[]> {
-        return this.productService.findAll();
+    async getAllProducts() {
+      const products = await prisma.products.findMany();
+      const productIds = products.map(product => product.product_id);
+  
+      const productOffers = await prisma.product_offers.findMany({
+        where: {
+          product_id: {
+            in: productIds,
+          },
+        },
+      });
+  
+      const formattedProducts = products.map(product => ({
+        product_name: product.product_name,
+        offers: productOffers.filter(offer => offer.product_id === product.product_id).map(offer => ({
+          id: offer.id,
+          image_url: offer.image_url,
+        })),
+      }));
+  
+      return { products: formattedProducts };
     }
+    
+  
 
     @Get(':id')
     getProductById(@Param('id', ParseIntPipe) id: number): Promise<Product> {

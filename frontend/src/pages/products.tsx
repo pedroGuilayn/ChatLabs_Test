@@ -1,7 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import styles from '../app/Products.module.css'; 
+import styles from '../styles/Products.module.css'; 
 import { Product, Offer } from '@/interfaces/product';
+import { useRouter } from 'next/router';
   
 
 
@@ -9,6 +10,7 @@ const ProductsPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     fetch('http://localhost:3000/products')
@@ -27,6 +29,10 @@ const ProductsPage = () => {
     setFilteredProducts(results);
   }, [searchTerm, products]);
 
+  const handleProductClick = (id: number) => {
+    router.push(`/product-details/${id}`);
+  }; 
+  
   return (
     <div>
       <input
@@ -38,7 +44,11 @@ const ProductsPage = () => {
       />
       <div className={styles.productsContainer}>
         {filteredProducts.map(product => (
-          <div key={product.offers[0].id} className={styles.productCard}>
+          <div
+            key={product.offers[0].product_id}
+            className={styles.productCard}
+            onClick={() => handleProductClick(product.offers[0].product_id)}
+          >
             <img src={product.offers[0].image_url} alt={product.product_name} className={styles.productImage} />
             <div className={styles.productName}>{product.product_name}</div>
           </div>
@@ -47,5 +57,8 @@ const ProductsPage = () => {
     </div>
   );
 };
+
+
+
 
 export default ProductsPage;

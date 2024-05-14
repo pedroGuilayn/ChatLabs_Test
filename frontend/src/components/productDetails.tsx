@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product as ProductDetailInterface } from '../interfaces/product';
-import styles from '../app/ProductDetail.module.css';
+import styles from '../styles/ProductDetail.module.css';
 
 interface ProductDetailProps {
   product: ProductDetailInterface;
@@ -54,7 +54,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
               <img src={offer.image_url} alt={offer.seller} className={styles.offerImage} />
               <div className={styles.offerDetails}>
                 <h3>{offer.seller}</h3>
-                <p>Rating: {offer.rating}</p>
+                <p>Nota: {offer.rating}</p>
                 <p>{offer.title}</p>
               </div>
               <div className={styles.offerPrice}>
