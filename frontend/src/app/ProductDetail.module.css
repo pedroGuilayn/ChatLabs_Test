@@ -1,0 +1,91 @@
+.productDetailContainer {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .productHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .productImage {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .productPrices {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .productPrices a {
+    margin: 5px 0;
+    text-decoration: none;
+    color: #0070f3;
+  }
+  
+  .productPrices a:hover {
+    text-decoration: underline;
+  }
+  
+  .offerList {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .offerCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.3s;
+  }
+  
+  .offerCard:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .offerInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .offerImage {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .offerDetails {
+    flex: 1;
+  }
+  
+  .offerPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0070f3;
+    display: flex;
+    align-items: center;
+  }
+  
+  .arrow {
+    margin-left: 10px;
+    font-size: 24px;
+  }
