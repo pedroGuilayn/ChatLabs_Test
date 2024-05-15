@@ -23,6 +23,7 @@ export class ProductsController {
       });
   
       const formattedProducts = products.map(product => ({
+        product_id :  product.product_id,
         product_name: product.product_name,
         offers: productOffers.filter(offer => offer.product_id === product.product_id).map(offer => ({
           id: offer.id,

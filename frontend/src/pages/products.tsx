@@ -16,8 +16,8 @@ const ProductsPage = () => {
     fetch('http://localhost:3000/products')
       .then(response => response.json())
       .then(data => {
-        setProducts(data);
-        setFilteredProducts(data);  
+        setProducts(data.products);
+        setFilteredProducts(data.products);  
       })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
@@ -47,7 +47,7 @@ const ProductsPage = () => {
           <div
             key={product.offers[0].product_id}
             className={styles.productCard}
-            onClick={() => handleProductClick(product.offers[0].product_id)}
+            onClick={() => handleProductClick(product.product_id)}
           >
             <img src={product.offers[0].image_url} alt={product.product_name} className={styles.productImage} />
             <div className={styles.productName}>{product.product_name}</div>
